@@ -21,7 +21,7 @@ function App() {
     fetch(beerUrl)
       .then((res) => res.json())
       .then((data) => {
-        setBeers((prevBeers) => [...beers, ...data]);
+        setBeers((prevBeers) => [...prevBeers, ...data]);
       });
    },[beers]);
   
@@ -36,14 +36,12 @@ function App() {
       
       window.addEventListener('scroll', infiniteScroll);
       getBeers(page)
-      console.log(beers);
-      console.log(page);
       return () => {
         window.removeEventListener('scroll', infiniteScroll);
       };
    },[page, getBeers, beers]);
 
-  //console.log(beers);
+  console.log(beers);
   return (
     <div className="App">
       <p>Beers</p>
